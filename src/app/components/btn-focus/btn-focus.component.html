@@ -1,0 +1,14 @@
+<button
+  [class]="'btn btn-' + type"
+  style="
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 30px;
+  "
+>
+  <p style="transform: translateY(4px)" class="text-center">
+    <ng-content></ng-content>
+  </p>
+</button>

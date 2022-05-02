@@ -1,0 +1,24 @@
+.loader {
+  font-size: 30px;
+  font-weight: 600;
+  color: crimson;
+}
+
+.loader {
+  -webkit-animation: rotate 1s linear 0s infinite normal;
+  -moz-animation: rotate 1s linear 0s infinite normal;
+  -ms-animation: rotate 1s linear 0s infinite normal;
+  animation: rotate 1s linear 0s infinite normal;
+}
+
+@-webkit-keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
