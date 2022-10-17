@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { SwalComponent, SwalPortalTargets } from '@sweetalert2/ngx-sweetalert2';
 import { Subscription } from 'rxjs';
 import { AsistanceService } from 'src/app/services/asistance.service';
@@ -16,6 +16,7 @@ export class MainClientComponent implements OnInit, OnDestroy {
   registrantData: any;
   runtimeRegistrantId: number | any;
   private subscVerified: Subscription | undefined;
+  print: boolean;
   @ViewChild('loadSwal') public readonly loadSwal!: SwalComponent;
   @ViewChild('goinInSwal') public readonly goinInSwal!: SwalComponent;
   @ViewChild('goinOutSwal') public readonly goinOutSwal!: SwalComponent;
@@ -25,12 +26,15 @@ export class MainClientComponent implements OnInit, OnDestroy {
   loaderText: string = '';
 
   constructor(
+    @Inject('API_CONF') private conf: any,
     public readonly swalTargets: SwalPortalTargets,
     private _ws: SocketService,
     private _state: StateService,
     private _registrants: RegistrantsService,
     private _asistance: AsistanceService
-  ) {}
+  ) {
+    this.print = this.conf.print;
+  }
 
   ngOnInit(): void {
     this.subscVerified = this.handleClientVerified();

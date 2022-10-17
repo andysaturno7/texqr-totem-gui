@@ -13,8 +13,6 @@ export class RegistrantsService {
   ) {}
 
   getRegistrantByCode(code: string | number) {
-    console.log({ conf: this.conf });
-
     return this.http.get<any>(
       `${this.conf.uri}/projects/${this.conf.projectId}/registrants/${code}`
     );

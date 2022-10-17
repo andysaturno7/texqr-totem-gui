@@ -3,5 +3,6 @@
   "systemName": "developmentSystem",
   "roomId": "cf99e814-e7c0-4e91-8528-526854c219d9",
   "projectId": "caeda470-7864-47f0-86ab-062232e9a4e7",
-  "authToken": ""
+  "authToken": "",
+  "print": true
 }

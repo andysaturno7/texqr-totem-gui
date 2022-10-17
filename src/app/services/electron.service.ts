@@ -31,6 +31,11 @@ export class ElectronService {
       });
   }
 
+  getSettings() {
+    let settings = this.electron.ipcRenderer.invoke('get_settings');
+    return settings;
+  }
+
   send(ev: string, args = null) {
     if (this.isElectron()) {
       return this.electron.ipcRenderer.send(ev, args);

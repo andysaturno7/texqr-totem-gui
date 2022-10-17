@@ -19,20 +19,16 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BtnFocusComponent } from './components/btn-focus/btn-focus.component';
 import { JwtAuthInterceptor } from './interceptors/jwt-auth.interceptor';
 
-declare const __dirname: any;
+declare const Buffer: any;
 
 export function init() {
   if ((<any>window).require) {
-    console.log('any window true');
-
-    var fs = (<any>window).require('fs');
-    var path = (<any>window).require('path');
-    return JSON.parse(
-      fs.readFileSync(path.join(__dirname, 'assets', 'config.json'))
-    );
+    let electron = (<any>window).require('electron');
+    let settings = electron.ipcRenderer.sendSync('get_settings');
+    settings = Buffer.from(settings).toString('utf8');
+    settings = JSON.parse(settings);
+    return settings;
   } else {
-    console.log('any window false');
-
     return {
       uri: 'http://localhost:5050',
       systemName: 'developSystemName',
